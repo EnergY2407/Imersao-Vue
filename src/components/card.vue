@@ -2,7 +2,7 @@
   <div class="card">
     <div>{{a}}</div>
     <button @click="clickHandler">++</button>
-    <div class="card-title">Titulo
+    <div class="card-title">
       {{ title }}
     </div>
     <div>{{ body }}</div>
@@ -22,7 +22,7 @@ export default defineComponent({
   setup() {
     const a = ref(0);
 
-    const clickHandler = (e: MouseEvent) => {
+    const clickHandler = () => {
       console.log(a.value);
       a.value += 1;
     };
@@ -40,6 +40,8 @@ export default defineComponent({
   padding: 5px;
   width: 200px;
   height: 200px;
+  background: purple;
+  color: white;
 }
 
 .card-title {
