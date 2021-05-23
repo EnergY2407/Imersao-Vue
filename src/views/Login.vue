@@ -29,7 +29,9 @@ export default defineComponent({
     };
     const userHandler = (e:KeyboardEvent) => {
       console.log(e);
-      if (e.key === 'Enter' && state.username && pass.value) {
+      if (state.username === '') {
+        alert('NOME NÃO PODE SER VAZIO');
+      } else if (e.key === 'Enter' && state.username && pass.value) {
         console.log('apertei enter');
         pass.value.focus();
       }
@@ -37,6 +39,9 @@ export default defineComponent({
 
     const passHandler = (e:KeyboardEvent) => {
       console.log(e);
+      if (state.password === '') {
+        alert('SENHA NÃO PODE SER VAZIO');
+      }
       if (e.key === 'Enter' && state.username && state.password) {
         console.log('apertei enter');
       }
