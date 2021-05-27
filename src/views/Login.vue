@@ -1,22 +1,25 @@
 <template>
 <div>
   <div>Usuario</div>
-  <input ref="user" v-model="username" type="text" @keyup="userHandler">
-
-<div style="margin-top: 10px">Senha</div>
-<input ref="pass" v-model="password" type="password" @keyup="passHandler">
-<div style="margin-top: 10px"><button @click="login">Entrar</button>
-</div>
-</div>
+    <input ref="user" v-model="username" type="text" @keyup="userHandler">
+    <div style="margin-top: 10px">Senha</div>
+    <input ref="pass" v-model="password" type="password" @keyup="passHandler">
+    <div style="margin-top: 10px"><button @click="login">Entrar</button>
+   </div>
+  </div>
 </template>
 
 <script lang="ts">
+import useAuth from '@/modules/auth';
+import { useRouter } from 'vue-router';
 import {
   defineComponent, reactive, Ref, ref, toRefs,
 } from 'vue';
 
 export default defineComponent({
   setup() {
+    const auth = useAuth();
+    const router = useRouter();
     const state = reactive({
       username: '',
       password: '',
@@ -25,7 +28,11 @@ export default defineComponent({
     const pass: Ref<HTMLElement|null> = ref(null);
 
     const login = () => {
-      console.log('Login', state.username, state.password);
+      const res = auth.actions.login(state.username, state.password);
+
+      if (res) {
+        router.push({ name: 'Home' });
+      }
     };
     const userHandler = (e:KeyboardEvent) => {
       console.log(e);
@@ -41,8 +48,7 @@ export default defineComponent({
       console.log(e);
       if (state.password === '') {
         alert('SENHA NÃO PODE SER VAZIO');
-      }
-      if (e.key === 'Enter' && state.username && state.password) {
+      } else if (e.key === 'Enter' && state.username && state.password) {
         console.log('apertei enter');
       }
     };

@@ -7,8 +7,18 @@ password: string;
 token: string;
 }
 
+interface AuthMutations {
+  logout: () => boolean;
+}
+
+interface AuthActions {
+  login: (username: string, password: string) => boolean;
+}
+
 interface useAuth{
     state: AuthState;
+    mutations: AuthMutations;
+    actions: AuthActions;
 }
 const state : AuthState = reactive({
   id: '',
@@ -17,9 +27,30 @@ const state : AuthState = reactive({
   token: '',
 });
 
-const mutations = {};
+const mutations = {
+  login(id:string, username: string, token: string) {
+    state.id = id;
+    state.username = username;
+    state.token = token;
+  },
 
-const actions = {};
+  logout() {
+    console.log('logout');
+    state.token = '';
+    state.id = '';
+    state.username = '';
+
+    return true;
+  },
+};
+
+const actions = {
+  login(username: string, password: string) {
+    console.log('Login', username, password);
+    mutations.login('id', username, 'token');
+    return true;
+  },
+};
 
 export default function useAuth(): Readonly<useAuth> {
   return readonly({
