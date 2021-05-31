@@ -9,9 +9,6 @@
     <div v-if="isLogedIn">
       Bem vindo <strong>{{username}}</strong>
 
-    </div>
-
-  </div>
   <router-view/>
 </template>
 <script lang="ts">

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { reactive, readonly } from 'vue';
 
 interface AuthState {
@@ -48,6 +49,11 @@ const actions = {
   login(username: string, password: string) {
     console.log('Login', username, password);
     mutations.login('id', username, 'token');
+
+    axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
+      console.log('res', res);
+    });
+
     return true;
   },
 };
