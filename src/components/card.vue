@@ -1,12 +1,15 @@
 <template>
   <div class="card">
-    <div>{{a}}
-    <button @click="clickHandler">Comprar</button></div>
 
     <div class="card-title">
       {{ title }}
     </div>
-    <div>{{ body }}</div>
+    <div>{{ body }}
+      <div class="card-buttons">
+      <button class="button-more">Mais </button>
+      <button class="button-buy">Comprar</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -58,8 +61,10 @@ export default defineComponent({
 .card-title {
   border-bottom: 1px solid black;
 }
-button{
-  size: 1000px;
-
+.card-buttons{
+  margin: 3px;
+}
+.button-buy{
+  margin-left: 10px;
 }
 </style>

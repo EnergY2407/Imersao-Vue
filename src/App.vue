@@ -6,7 +6,7 @@
     <router-link v-if="!isLogedIn" to="/login">Login</router-link>
     <a v-else href="#" @click="logout">Logout</a>
 
-    <div v-if="isLogedIn">
+    <div class="loged" v-if="isLogedIn">
       Bem vindo <strong>{{username}}</strong>
     </div>
   </div>
@@ -68,6 +68,9 @@ export default defineComponent({
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+  .loged{
+    padding: 10px;
   }
 }
 </style>
