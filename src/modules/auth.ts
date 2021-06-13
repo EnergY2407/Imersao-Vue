@@ -13,7 +13,7 @@ interface AuthMutations {
 }
 
 interface AuthActions {
-  login: (username: string, password: string) => boolean;
+  login: (username: string, password: string) => Promise<boolean>;
 }
 
 interface useAuth{
@@ -46,15 +46,9 @@ const mutations = {
 };
 
 const actions = {
-  login(username: string, password: string) {
-    console.log('Login', username, password);
+  async login(username: string, password: string) {
     mutations.login('id', username, 'token');
-
-    axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
-      console.log('res', res);
-    });
-
-    return true;
+    return false;
   },
 };
 

@@ -1,10 +1,8 @@
 <template>
   <div class="card">
-    <div>{{a}}</div>
-    <button @click="clickHandler">++</button>
+    <div>{{a}}
+    <button @click="clickHandler">Comprar</button></div>
 
-    <div>{{a}}</div>
-    <button @click="clickGlobalHandler">++G</button>
     <div class="card-title">
       {{ title }}
     </div>
@@ -34,29 +32,34 @@ export default defineComponent({
     const clickHandler = () => {
       state.a++;
     };
-    const clickGlobalHandler = () => {
-      emit('plus-plus', 1);
-    };
+    // const clickGlobalHandler = () => {
+    // emit('plus-plus', 1);
+
     return {
       ...toRefs(state),
       clickHandler,
-      clickGlobalHandler,
     };
   },
 });
 </script>
 <style scoped>
 .card {
-  border: 1px solid black;
+  border: inset;
+  border-color: blueviolet;
   margin: 5px;
   padding: 5px;
   width: 200px;
+  border-radius: 10px;
   height: 200px;
-  background: purple;
-  color: white;
+  background: #f2f2f2;
+  color: black;
 }
 
 .card-title {
   border-bottom: 1px solid black;
+}
+button{
+  size: 1000px;
+
 }
 </style>

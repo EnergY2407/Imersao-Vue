@@ -8,7 +8,8 @@
 
     <div v-if="isLogedIn">
       Bem vindo <strong>{{username}}</strong>
-
+    </div>
+  </div>
   <router-view/>
 </template>
 <script lang="ts">
@@ -55,6 +56,8 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  border: 1px solid black;
+  background-color: #f2f2f2;
 }
 
 #nav {
@@ -62,8 +65,6 @@ export default defineComponent({
 
   a {
     font-weight: bold;
-    color: #2c3e50;
-
     &.router-link-exact-active {
       color: #42b983;
     }
