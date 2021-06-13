@@ -6,19 +6,26 @@
     </div>
     <div>{{ body }}
       <div class="card-buttons">
-      <button class="button-more">Mais </button>
+      <button class="button-more" @click="modalOpen = true">Mais</button>
       <button class="button-buy">Comprar</button>
       </div>
+  <modal :open="modalOpen" @on-close="modalOpen = false">
+    mais informações
+    aqui vai pegar info do state
+    e colocar aqui
+    </modal>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {
-  defineComponent, reactive, toRefs,
+  defineComponent, reactive, ref, toRefs,
 } from 'vue';
+import Modal from './Modal.vue';
 
 export default defineComponent({
+  components: { Modal },
   props: {
     title: { type: String, default: '' },
     body: { type: String, default: '' },
@@ -26,6 +33,8 @@ export default defineComponent({
 
   // composition API
   setup(props, { emit }) {
+    const modalOpen = ref(false);
+
     const state = reactive({
       a: 0,
       b: 0,
@@ -41,6 +50,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       clickHandler,
+      modalOpen,
     };
   },
 });
@@ -67,4 +77,5 @@ export default defineComponent({
 .button-buy{
   margin-left: 10px;
 }
+
 </style>
