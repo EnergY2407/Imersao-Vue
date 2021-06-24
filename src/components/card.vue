@@ -9,7 +9,7 @@
       <button class="button-more" @click="modalOpen = true">Mais</button>
       <button class="button-buy">Comprar</button>
       </div>
-  <modal :open="modalOpen" @on-close="modalOpen = false">
+  <modal class="modal-body" :open="modalOpen" @on-close="modalOpen = false">
     mais informações
     aqui vai pegar info do state
     e colocar aqui
@@ -78,4 +78,9 @@ export default defineComponent({
   margin-left: 10px;
 }
 
+.modal-body{
+    max-height: 1000px;
+    overflow-y: auto;
+
+}
 </style>

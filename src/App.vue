@@ -56,17 +56,18 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  border: 1px solid black;
-  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
 }
 
 #nav {
-  padding: 30px;
-
+  padding: 20px;
+  background-color: #b3c4e0;
   a {
     font-weight: bold;
+    color: #907FA4;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #CE97B0;
     }
   }
   .loged{

@@ -1,25 +1,49 @@
 <template>
   <div class="home">
-    <div class="home-title"><strong>LOJA DE HARDWARE 2.0</strong></div>
+    <div class="home-title">LOJA DE HARDWARE 2.0</div>
+   <div><img class="home-banner" src="https://media.istockphoto.com/vectors/computer-hardware-word-concepts-banner-vector-id1172788328" />
+     </div>
 
-      <div class="hot">
+<div class="main-products">
+
+<div class="hot">
         <strong>
-          Produtos em destaque:
+          Produtos em promoção
+        </strong>
+          <div class="um">
+
+          <card title="Hardware 1" body="Desc hardware 1"/>
+          <card title="Hardware 2" body="Desc hardware 2"/>
+          </div>
+<div class="dois">
+
+          <card title="Hardware 1" body="Desc hardware 1"/>
+          <card title="Hardware 2" body="Desc hardware 2"/>
+</div>
+    </div>
+<div class="center-home"></div>
+    <div class="relevant">
+
+          <strong>
+            Produtos relevantes
           </strong>
+
+        <div class="relevant-left">
+            <card title="Hardware 3" body="Desc hardware 3"/>
+            <card title="Hardware 4" body="Desc hardware 4"/>
+    </div>
+
+        <div class="relevant-right">
+            <card title="Hardware 1" body="Desc hardware 1"/>
+            <card title="Hardware 2" body="Desc hardware 2"/>
         </div>
-    <div style="display: flex; flex-wrap: wrap;">
-<card title="Hardware 1" body="Desc hardware 1"/>
-<card title="Hardware 2" body="Desc hardware 2"/>
-<card title="Hardware 3" body="Desc hardware 3"/>
-<card title="Hardware 4" body="Desc hardware 4"/>
-<card title="Hardware 5" body="Desc hardware 5"/>
-<card title="Hardware 6" body="Desc hardware 6"/>
-<card title="Hardware 7" body="Desc hardware 7"/>
-<card title="Hardware 8" body="Desc hardware 8"/>
+    </div>
+</div>
+
+  <div class="category"><strong>Compre por categoria:</strong>
   </div>
-  <div class="category"><strong>Compre por categoria:</strong></div>
+  <div>**Categorias vão aqui**</div>
   </div>
-  <div></div>
   <div ><footer class="footer-home">Feito por hugo arrumar footer dps</footer></div>
 </template>
 
@@ -45,22 +69,68 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.home {
-  width: 100%;
-  height: 100%;
-
+.um{
+display: flex;
+padding: 20px;
+width: fit-content;
 }
+.dois{
+display: flex;
+padding: 20px;
+width: fit-content;
+}
+.home {
+  box-sizing: border-box;
+  background-color: #b3c4e0;
+}
+
+.home-banner{
+  border-radius: 3000px;
+  max-width: 30%;
+}
+
 .home-title{
   font-size: 30px;
   margin-bottom: 30px;
-  color: red;
+  color: black;
 }
-.hot{
-  color: purple;
-  font-size: 20px;
+
+.main-products{
+display: flex;
+margin-top: 1rem;
+width: fit-content;
+margin-left: 400px;
+}
+
+.relevant{
+  flex: 50%;
   padding: 10px;
-  font-weight: bold;
+
 }
+
+.relevant-left{
+display: flex;
+padding: 20px;
+width: fit-content;
+}
+
+.relevant-right{
+display: flex;
+padding: 20px;
+width: fit-content;
+
+}
+.center-home{
+width: 50px;
+
+}
+
+.hot{
+  flex: 50%;
+  padding: 10px;
+
+}
+
 .category{
   padding: 10px;
   font-size: 20px;
