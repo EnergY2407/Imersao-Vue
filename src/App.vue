@@ -2,11 +2,53 @@
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
-    <router-link to="/options">Options</router-link>
-  </div>
-  <router-view/>
-</template>
+    <router-link to="/options">Options</router-link> |
+    <router-link v-if="!isLogedIn" to="/login">Login</router-link>
+    <a v-else href="#" @click="logout">Logout</a>
 
+    <div class="loged" v-if="isLogedIn">
+      Bem vindo <strong>{{ username }}</strong>
+    </div>
+  </div>
+  <router-view />
+</template>
+<script lang="ts">
+import { computed, defineComponent, watch } from 'vue';
+import useAuth from '@/modules/auth';
+import { useRoute, useRouter } from 'vue-router';
+
+export default defineComponent({
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+    const auth = useAuth();
+
+    watch(
+      () => route.path,
+      () => {
+        if (!auth.state.token) {
+          router.push({ name: 'Login' });
+        }
+      },
+    );
+
+    const isLogedIn = computed(() => auth.state.token);
+    const username = computed(() => auth.state.username);
+
+    const logout = () => {
+      auth.mutations.logout();
+    };
+    if (!auth.state.token) {
+      router.push({ name: 'Login' });
+    }
+    return {
+      isLogedIn,
+      logout,
+      username,
+    };
+  },
+});
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -17,15 +59,18 @@
 }
 
 #nav {
-  padding: 30px;
-
+  padding: 20px;
+  background-color: #b3c4e0;
   a {
     font-weight: bold;
-    color: #2c3e50;
-
+    color: #907fa4;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #ce97b0;
     }
   }
+  .loged {
+    padding: 10px;
+  }
+
 }
 </style>
