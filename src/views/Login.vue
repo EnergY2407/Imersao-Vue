@@ -1,5 +1,5 @@
 <template>
-<div>
+<div  class="user">
   <div>Usuario</div>
     <input ref="user" v-model="username" type="text" @keyup="userHandler">
     <div style="margin-top: 10px">Senha</div>
@@ -64,4 +64,8 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.user{
+  border: 1px solid;
+  background: aqua;
+}
 </style>

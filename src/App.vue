@@ -7,10 +7,10 @@
     <a v-else href="#" @click="logout">Logout</a>
 
     <div class="loged" v-if="isLogedIn">
-      Bem vindo <strong>{{username}}</strong>
+      Bem vindo <strong>{{ username }}</strong>
     </div>
   </div>
-  <router-view/>
+  <router-view />
 </template>
 <script lang="ts">
 import { computed, defineComponent, watch } from 'vue';
@@ -56,8 +56,6 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 0;
-  padding: 0;
 }
 
 #nav {
@@ -65,13 +63,14 @@ export default defineComponent({
   background-color: #b3c4e0;
   a {
     font-weight: bold;
-    color: #907FA4;
+    color: #907fa4;
     &.router-link-exact-active {
-      color: #CE97B0;
+      color: #ce97b0;
     }
   }
-  .loged{
+  .loged {
     padding: 10px;
   }
+
 }
 </style>

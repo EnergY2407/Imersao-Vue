@@ -79,8 +79,7 @@ export default defineComponent({
 }
 
 .modal-body{
-    max-height: 1000px;
+  max-height: calc(100vh - 200px);
     overflow-y: auto;
-
 }
 </style>
