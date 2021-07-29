@@ -1,11 +1,16 @@
 <template>
   <div class="home">
+
     <div class="home-title">LOJA DE HARDWARE 2.0</div>
+
     <div>
       <img
         class="home-banner"
         src="https://media.istockphoto.com/vectors/computer-hardware-word-concepts-banner-vector-id1172788328"
       />
+    </div>
+    <div>
+      <img class="a" src="https://image.freepik.com/fotos-gratis/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner_1258-52379.jpg"/>
     </div>
     <div class="top-title">
       <strong> Produtos em destaque </strong>
@@ -16,7 +21,12 @@
         <strong> Produtos em promoção </strong>
 
         <div class="top">
-          <card title="Hardware 1" body="Desc hardware 1" />
+          <div v-for="c in CardProduct" :key="c.id" >
+
+        <div>
+          {{ c.title }}
+        </div>
+          </div>
           <card title="Hardware 2" body="Desc hardware 2" />
         </div>
 
@@ -41,10 +51,9 @@
         </div>
       </div>
     </div>
-
-    <div class="category"><strong>Compre por categoria:</strong></div>
-
-    <div>**Categorias vão aqui**</div>
+    <div>
+      <img class="a" src="https://image.freepik.com/fotos-gratis/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner_1258-52379.jpg"/>
+    </div>
   </div>
 
   <!-- <div ><footer class="footer-home">Feito por hugo arrumar footer dps</footer></div> -->
@@ -54,6 +63,7 @@
 import { defineComponent, reactive, toRefs } from 'vue';
 
 import Card from '@/components/Card.vue';
+import CardProduct from '@/modules/store';
 
 export default defineComponent({
   components: {
@@ -70,6 +80,7 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+
 .top {
   display: flex;
   padding: 20px;
@@ -80,7 +91,12 @@ export default defineComponent({
   border-radius: 3000px;
   max-width: 30%;
 }
-
+.a{
+  margin-top: 25px;
+  height: 10px;
+  width: 60%;
+  border-radius: 4px;
+}
 .home-title {
   font-size: 30px;
   margin-bottom: 30px;
@@ -136,13 +152,5 @@ export default defineComponent({
   font-size: 20px;
   color: #df5286;
 }
-.footer-home {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: pink;
-  color: black;
-  text-align: center;
-}
+
 </style>

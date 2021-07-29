@@ -2,18 +2,20 @@
   <div class="card">
 
     <div class="card-title">
-      {{ title }}
+
+      {{ CardProducts }}
+
     </div>
-    <div>{{ body }}
+    <div>
+      {{ body }}
+
       <div class="card-buttons">
-      <button class="button-more" @click="modalOpen = true">Mais</button>
-      <button class="button-buy">Comprar</button>
+        <button class="button-more" @click="modalOpen = true">Mais</button>
+        <button class="button-buy">Comprar</button>
       </div>
-  <modal class="modal-body" :open="modalOpen" @on-close="modalOpen = false">
-    mais informações
-    aqui vai pegar info do state
-    e colocar aqui
-    </modal>
+      <modal class="modal-body" :open="modalOpen" @on-close="modalOpen = false">
+
+      </modal>
     </div>
   </div>
 </template>
@@ -22,6 +24,7 @@
 import {
   defineComponent, reactive, ref, toRefs,
 } from 'vue';
+import CardProduct from '@/modules/store';
 import Modal from './Modal.vue';
 
 export default defineComponent({
@@ -35,21 +38,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const modalOpen = ref(false);
 
-    const state = reactive({
-      a: 0,
-      b: 0,
-      c: 0,
-    });
-
-    const clickHandler = () => {
-      state.a++;
-    };
-    // const clickGlobalHandler = () => {
-    // emit('plus-plus', 1);
-
     return {
-      ...toRefs(state),
-      clickHandler,
+
       modalOpen,
     };
   },
@@ -66,20 +56,26 @@ export default defineComponent({
   height: 200px;
   background: #f2f2f2;
   color: black;
+   border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px blueviolet;
+    animation: mymove 5s infinite;
 }
-
+@keyframes mymove {
+  50% {box-shadow: 10px 20px 30px purple;}
+}
 .card-title {
   border-bottom: 1px solid black;
 }
-.card-buttons{
+.card-buttons {
   margin: 3px;
 }
-.button-buy{
+.button-buy {
   margin-left: 10px;
 }
 
-.modal-body{
+.modal-body {
   max-height: calc(100vh - 200px);
-    overflow-y: auto;
+  overflow-y: auto;
 }
 </style>

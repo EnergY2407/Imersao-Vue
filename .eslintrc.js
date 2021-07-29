@@ -16,6 +16,6 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     ident: 'off',
     'no-plusplus': 'off',
-
+    'vetur.validation.template': 0,
   },
 };

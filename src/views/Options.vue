@@ -21,23 +21,36 @@
         <textarea></textarea>
       </div>
 
-      <button>Enviar</button>
+      <button @submit="click">Enviar</button>
     </form>
+    <div class="r"></div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent({});
+export default defineComponent({
+  methods: {
+    submit() {
+      console.warn('enviado');
+    },
+  },
+});
 </script>
 <style scoped>
+.r {
+  height: 760px;
+}
 .title-form {
-  margin-top: 20px;
-  color: red;
+  padding-top: 20px;
+  font-size: 20px;
+  color: rgb(194, 16, 16);
+  background-color: #b3c4e0;
 }
 .form {
-  margin-top: 20px;
+  background-color: #b3c4e0;
+  padding: 20px;
   display: flex;
   justify-content: center;
 }
@@ -47,18 +60,46 @@ export default defineComponent({});
 .form-topic {
   padding: 10px;
 }
-.form-text{
+.form-text {
   padding: 10px;
   display: flex;
 }
-button{
+select {
+  cursor: pointer;
+  height: 30px;
+  width: 50%;
+  border-radius: 25px;
+  border: 2px solid #609;
+}
+
+input,
+textarea {
+  border-radius: 25px;
+  border: 2px solid #609;
+  padding: 5px;
+  width: 200px;
+  height: 15px;
+}
+textarea {
+  resize: none;
+  height: 50px;
+}
+textarea:focus,
+input:focus,
+select:focus {
+  outline: none;
+}
+button {
   width: 100px;
   font-size: 15px;
-  border-radius: 2px;
   padding: 10px;
   background-color: #f2f2f2;
   border: 1px solid;
   cursor: pointer;
+  border-radius: 14px;
 }
-
+button:hover {
+  background: rgb(255, 255, 255);
+  color: black;
+}
 </style>

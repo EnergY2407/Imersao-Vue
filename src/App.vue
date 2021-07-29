@@ -1,14 +1,17 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/options">Options</router-link> |
-    <router-link v-if="!isLogedIn" to="/login">Login</router-link>
-    <a v-else href="#" @click="logout">Logout</a>
-
+    <ul>
+      <li><router-link to="/">HOME</router-link></li>
+      <li><router-link to="/about">ABOUT</router-link></li>
+      <li><router-link to="/options">OPTIONS</router-link></li>
+      <li style="float:right">
+        <router-link v-if="!isLogedIn" to="/login">LOGIN</router-link>
+        <a v-else href="#" @click="logout">LOGOUT</a>
+      </li>
     <div class="loged" v-if="isLogedIn">
-      Bem vindo <strong>{{ username }}</strong>
+      Bem vindo <strong class="">{{ username }}</strong>
     </div>
+    </ul>
   </div>
   <router-view />
 </template>
@@ -58,19 +61,38 @@ export default defineComponent({
   color: #2c3e50;
 }
 
-#nav {
-  padding: 20px;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
   background-color: #b3c4e0;
-  a {
-    font-weight: bold;
-    color: #907fa4;
-    &.router-link-exact-active {
-      color: #ce97b0;
-    }
-  }
+  font-family: 'Times New Roman', Times, serif;
+}
+
+li {
+  float: left;
+
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #b2b2ff;
+  border-radius: 20px;
+}
+
   .loged {
+    width: 85%;
+    font-size: 30px;
+    color: blue;
     padding: 10px;
   }
 
-}
 </style>
