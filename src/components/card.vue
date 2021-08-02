@@ -1,27 +1,21 @@
 <template>
   <div class="card">
-
     <div class="card-title">
       {{ title }}
     </div>
-    <div>{{ body }}
-      <div class="card-buttons">
+    <div>{{ body }}</div>
+    <div class="card-buttons">
       <button class="button-more" @click="modalOpen = true">Mais</button>
       <button class="button-buy">Comprar</button>
-      </div>
-  <modal class="modal-body" :open="modalOpen" @on-close="modalOpen = false">
-    mais informações
-    aqui vai pegar info do state
-    e colocar aqui
-    </modal>
     </div>
+    <modal class="modal-body" :open="modalOpen" @on-close="modalOpen = false">
+    </modal>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent, reactive, ref, toRefs,
-} from 'vue';
+import { defineComponent, ref, computed } from 'vue';
+// import useCardProducts from '@/modules/store';
 import Modal from './Modal.vue';
 
 export default defineComponent({
@@ -32,25 +26,17 @@ export default defineComponent({
   },
 
   // composition API
-  setup(props, { emit }) {
+  setup() {
+    //    const cardProducts = useCardProducts();
     const modalOpen = ref(false);
 
-    const state = reactive({
-      a: 0,
-      b: 0,
-      c: 0,
-    });
+    //  const list = computed(() => cardProducts.state.products);
 
-    const clickHandler = () => {
-      state.a++;
-    };
-    // const clickGlobalHandler = () => {
-    // emit('plus-plus', 1);
+    // console.log('-----', cardProducts.state.products);
 
     return {
-      ...toRefs(state),
-      clickHandler,
       modalOpen,
+      // list,
     };
   },
 });
@@ -66,12 +52,24 @@ export default defineComponent({
   height: 200px;
   background: #f2f2f2;
   color: black;
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px blueviolet;
+  animation: mymove 5s infinite;
+}
+@keyframes mymove {
+  50% {
+    box-shadow: 10px 20px 30px purple;
+  }
 }
 
 .card-title {
   border-bottom: 1px solid black;
 }
-.card-buttons{
+.card-desc {
+  border-bottom: 1px solid black;
+}
+.card-buttons {
   margin: 3px;
 }
 .button-buy{

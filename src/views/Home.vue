@@ -7,6 +7,12 @@
         src="https://media.istockphoto.com/vectors/computer-hardware-word-concepts-banner-vector-id1172788328"
       />
     </div>
+    <div>
+      <img
+        class="a"
+        src="https://image.freepik.com/fotos-gratis/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner_1258-52379.jpg"
+      />
+    </div>
     <div class="top-title">
       <strong> Produtos em destaque </strong>
     </div>
@@ -16,44 +22,52 @@
         <strong> Produtos em promoção </strong>
 
         <div class="top">
-          <card title="Hardware 1" body="Desc hardware 1" />
-          <card title="Hardware 2" body="Desc hardware 2" />
+          <div v-for="p in list" :key="p.id">
+            <card :title="p.title" :body="p.price" />
+          </div>
         </div>
 
         <div class="bottom">
-          <card title="Hardware 1" body="Desc hardware 1" />
-          <card title="Hardware 2" body="Desc hardware 2" />
+           <div v-for="p in list" :key="p.id">
+            <card :title="p.title" :body="p.price" />
+          </div>
         </div>
-
       </div>
       <div class="center-home"></div>
       <div class="relevant">
         <strong> Produtos relevantes </strong>
 
         <div class="relevant-left">
-          <card title="Hardware 3" body="Desc hardware 3" />
-          <card title="Hardware 4" body="Desc hardware 4" />
+          <div v-for="p in list" :key="p.id">
+            <card :title="p.title" :body="p.desc" />
+
+          </div>
         </div>
 
         <div class="relevant-right">
-          <card title="Hardware 1" body="Desc hardware 1" />
-          <card title="Hardware 2" body="Desc hardware 2" />
+          <div v-for="p in list" :key="p.id">
+            <card :title="p.title" :body="p.desc" />
+
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="category"><strong>Compre por categoria:</strong></div>
-
-    <div>**Categorias vão aqui**</div>
+    <div>
+      <img
+        class="a"
+        src="https://image.freepik.com/fotos-gratis/fundo-azul-do-gradiente-de-luxo-abstrato-liso-azul-escuro-com-vinheta-preta-studio-banner_1258-52379.jpg"
+      />
+    </div>
+    <div class="r"></div>
   </div>
-
-  <!-- <div ><footer class="footer-home">Feito por hugo arrumar footer dps</footer></div> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue';
+import { defineComponent, computed } from 'vue';
 
-import Card from '@/components/Card.vue';
+import Card from '@/components/card.vue';
+
+import useCardProducts from '@/modules/store';
 
 export default defineComponent({
   components: {
@@ -61,15 +75,20 @@ export default defineComponent({
   },
 
   setup() {
-    const state = reactive({});
-
+    const cardProducts = useCardProducts();
+    const list = computed(() => cardProducts.state.products);
     return {
-      ...toRefs(state),
+      list,
     };
   },
 });
 </script>
 <style scoped>
+.r{
+  background: #b3c4e0;
+  height: 400px;
+}
+
 .top {
   display: flex;
   padding: 20px;
@@ -80,18 +99,25 @@ export default defineComponent({
   border-radius: 3000px;
   max-width: 30%;
 }
-
+.a {
+  margin-top: 25px;
+  height: 10px;
+  width: 60%;
+  border-radius: 4px;
+}
 .home-title {
+
   font-size: 30px;
   margin-bottom: 30px;
   color: black;
 }
 
 .main-products {
+    border: 4px solid blue  ;
   display: flex;
+
   margin-top: 1rem;
-  width: fit-content;
-  margin-left: 400px;
+padding: 15px;
 }
 .top-title {
   font-size: 30px;
@@ -135,14 +161,5 @@ export default defineComponent({
   padding: 10px;
   font-size: 20px;
   color: #df5286;
-}
-.footer-home {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: pink;
-  color: black;
-  text-align: center;
 }
 </style>

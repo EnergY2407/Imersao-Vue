@@ -1,11 +1,15 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/options">Options</router-link> |
-    <router-link v-if="!isLogedIn" to="/login">Login</router-link>
-    <a v-else href="#" @click="logout">Logout</a>
+  <div>
+    <ul>
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/about">About</router-link></li>
+      <li><router-link to="/options">Options</router-link></li>
+      <li style="float: right">
+        <router-link v-if="!isLogedIn" to="/login">Login</router-link>
+        <a v-else href="#" @click="logout">Logout</a>
+      </li>
 
+    </ul>
     <div class="loged" v-if="isLogedIn">
       Bem vindo <strong>{{ username }}</strong>
     </div>
@@ -58,19 +62,36 @@ export default defineComponent({
   color: #2c3e50;
 }
 
-#nav {
-  padding: 20px;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: #b3c4e0;
-  a {
-    font-weight: bold;
-    color: #907fa4;
-    &.router-link-exact-active {
-      color: #ce97b0;
-    }
-  }
-  .loged {
-    padding: 10px;
-  }
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;transition-duration: 1s;
+}
+
+li a:hover:not(.active) {
+  background-color: #c6d8f5;
+  border-radius: 25px;
+  transition-duration: 300ms;
+}
+
+.loged {
+  padding: 10px;
+  background-color: #b3c4e0;
+  font-size: 25px;
 }
 </style>
